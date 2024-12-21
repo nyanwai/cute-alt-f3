@@ -1,6 +1,10 @@
 # cute-alt-f3
 it's like ALT-F4 but made by a dumb femboy (me)
 
+how to use?
+
+- press CTRL + ALT + F3
+
 how to add to startup?
 
 - windows + R
