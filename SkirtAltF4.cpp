@@ -24,9 +24,18 @@ void KillForegroundProcess() {
     DWORD pid = GetForegroundProcessID();
     if (pid == 0) return;
 
-    HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, pid);
+    HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ | PROCESS_TERMINATE, FALSE, pid);
     if (hProcess) {
-        TerminateProcess(hProcess, 1);  // Forcefully terminate the process
+        TCHAR processName[MAX_PATH] = { 0 };
+
+        if (GetModuleBaseName(hProcess, NULL, processName, MAX_PATH)) {
+            if (_tcsicmp(processName, _T("explorer.exe")) == 0) {
+                CloseHandle(hProcess);
+                return;
+            }
+        }
+
+        TerminateProcess(hProcess, 1);
         CloseHandle(hProcess);
     }
 }
@@ -36,7 +45,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     case WM_TRAY:
         if (lParam == WM_RBUTTONUP) {
             HMENU hMenu = CreatePopupMenu();
-            AppendMenu(hMenu, MF_STRING, 1, _T("Ewxit me >:3"));
+            AppendMenu(hMenu, MF_STRING, 1, _T("Exit me >:3"));  // Corrected the menu text
             POINT pt;
             GetCursorPos(&pt);
             SetForegroundWindow(hwnd);
@@ -79,7 +88,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     WNDCLASS wc = { 0 };
     wc.lpfnWndProc = WindowProc;
     wc.hInstance = hInstance;
-    wc.lpszClassName = _T("UwseMe3"); // Updated to UwseMe3
+    wc.lpszClassName = _T("UwseMe3"); // Class name updated to UwseMe3
     RegisterClass(&wc);
 
     HWND hwnd = CreateWindow(_T("UwseMe3"), _T(""), 0, 0, 0, 0, 0, NULL, NULL, hInstance, NULL);
