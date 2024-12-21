@@ -1,2 +1,13 @@
 # cute-alt-f3
-it's like ALT-F4 but instead of F4 you do ALT-F3 and also dangerous be carefull, i take 0 responsability.
+it's like ALT-F4 but made by a dumb femboy (me)
+
+how to add to startup?
+
+- windows + R
+- shell:startup
+- create shortcut of skirt-alt-f4.exe
+- paste it in the startup folder
+
+Done.
+
+P.S. DON'T PRESS ALT+F3 ON YOUR DESKTOP (IT WORKS I TESTED IT)
