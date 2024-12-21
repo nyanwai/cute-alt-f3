@@ -15,3 +15,5 @@ how to add to startup?
 Done.
 
 P.S. DON'T PRESS CTRL+ALT+F3 ON YOUR DESKTOP (IT WORKS I TESTED IT)
+
+P.P.S No worries i fixed the problem above
