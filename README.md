@@ -3,7 +3,7 @@ it's like ALT-F4 but made by a dumb femboy (me)
 
 how to use?
 
-- press CTRL + ALT + F3
+- press CTRL + ALT + 3
 
 how to add to startup?
 
